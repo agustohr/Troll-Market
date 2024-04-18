@@ -1,0 +1,18 @@
+@{
+    var role = User.FindFirst("role")?.Value??"";
+}
+<nav class="nav neo-box">
+    <a asp-action="Index" asp-controller="Home"><div>Home</div></a>
+    @if(role == "Admin"){
+        <a asp-action="Index" asp-controller="Admin"><div>Admin</div></a>
+        <a asp-action="Index" asp-controller="Shipment"><div>Shipment</div></a>
+        <a asp-action="Index" asp-controller="History"><div>History</div></a>
+    }else if(role == "Seller"){
+        <a asp-action="Index" asp-controller="Profile"><div>Profile</div></a>
+        <a asp-action="Index" asp-controller="Merchandise"><div>Merchandise</div></a>
+    }else if(role == "Buyer"){
+        <a asp-action="Index" asp-controller="Profile"><div>Profile</div></a>
+        <a asp-action="Index" asp-controller="Shop"><div>Shop</div></a>
+        <a asp-action="Index" asp-controller="Cart"><div>My Cart</div></a>
+    }
+</nav>

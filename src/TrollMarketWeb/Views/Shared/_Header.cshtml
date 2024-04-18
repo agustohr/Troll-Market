@@ -1,0 +1,14 @@
+@{
+    var username = User.FindFirst("username")?.Value??"";
+}
+<header class="header neo-box">
+    <div>
+        <h1>TROLL MARKET</h1>
+    </div>
+    <div>
+        <h3>Welcome, @username</h3>
+        <form asp-controller="Auth" asp-action="Logout" method="post">
+            <button type="submit">Sign Out</button>
+        </form>
+    </div>
+</header>

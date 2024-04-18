@@ -1,0 +1,149 @@
+@model ShopIndexViewModel
+@{
+    ViewData["Title"] = "Shop";
+}
+
+<div class="content neo-box">
+    <form method="get" asp-action="Index">
+        <div class="form_group_search">
+            <label for="productname" class="sub_title_search">Name</label>
+            <input type="text" name="productname" class="form_style_search">
+        </div>
+        <div class="form_group_search">
+            <label for="category" class="sub_title_search">Category</label>
+            <input type="text" name="category" class="form_style_search">
+        </div>
+        <div class="form_group_search">
+            <label for="description" class="sub_title_search">Description</label>
+            <input type="text" name="description" class="form_style_search">
+        </div>
+        <div class="form_foot">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="content neo-box">
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <th>Action</th>
+                <th>Name</th>
+                <th>Price</th>
+            </thead>
+            <tbody id="data">
+                @if(Model.ShopItems.Count() == 0){
+                    <tr>
+                        <td colspan="4"><span class="data-empty">Data Is Empty</span></td>
+                    </tr>
+                }else{
+                    @foreach(var item in Model.ShopItems){
+                        <tr>
+                            <td class="td-action">
+                                <button class="add-cart" id="@item.Id">Add to Cart</button>
+                                <button class="detail-info" id="@item.Id">Detail Info</button>
+                            </td>
+                            <td>@item.ProductName</td>
+                            <td>@item.Price</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <div class="pagination">
+                            <div>Page @Model.Pagination.PageNumber of @Model.Pagination.TotalPages</div>
+                            <div>
+                                @for(int pageNumber=1; pageNumber<=Model.Pagination.TotalPages; pageNumber++){
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber">
+                                        <button>@pageNumber</button>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal-layer">
+    <div class="popup-dialog">
+        <div>
+            <div class="info_group">
+                <label for="name" class="sub_key">Name</label>
+                <span class="sub_value" id="name"></span>
+            </div>
+            <div class="info_group">
+                <label for="category" class="sub_key">Category</label>
+                <span class="sub_value" id="category"></span>
+            </div>
+            <div class="info_group">
+                <label for="description" class="sub_key">Description</label>
+                <span class="sub_value" id="description"></span>
+            </div>
+            <div class="info_group">
+                <label for="price" class="sub_key">Price</label>
+                <span class="sub_value" id="price"></span>
+            </div>
+            <div class="info_group">
+                <label for="sellername" class="sub_key">Seller Name</label>
+                <span class="sub_value" id="sellername"></span>
+            </div>
+        </div>
+        <div>
+            <button id="cancel-button">Close</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-layer modal-addcart">
+    <div class="popup-dialog popup-addcart">
+        <div class="form_area">
+            @* <h4 class="title"></h4> *@
+            <form action="" id="addtocart">
+                <div class="form_group">
+                    <label for="quantity" class="sub_title">Quantity</label>
+                    <input type="number" class="form_style" name="quantity" id="quantity" min="1" placeholder="Enter Quantity Product">
+                </div>
+                <div class="form_group">
+                    <label for="shipment" class="sub_title">Shipment</label>
+                    <select name="shipment" id="shipment" class="form_style">
+                        @* <option value="">Select Shipment</option> *@
+                    </select>
+                </div>
+                <div class="form_foot">
+                    <button type="submit" class="btn" id="submit-button">Submit</button>
+                    <button type="button" class="btn cancel-addcart" id="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-layer modal-confirm">
+    <div class="popup-dialog popup-confirm">
+        <div class="message-confirm">
+            <span id="show-confirm"></span>
+        </div>
+        <div class="foot_button">
+            <button class="close-confirm" id="yes-button">Yes</button>
+            <button class="close-confirm" id="no-button">No</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-layer modal-alert">
+    <div class="popup-dialog popup-alert">
+        <div class="message-alert">
+            <span id="show-alert"></span>
+        </div>
+        <div class="foot_button">
+            <button class="close-alert" id="cancel-button">OK</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/scripts/shop.js"></script>

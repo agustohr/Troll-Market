@@ -1,0 +1,128 @@
+@model MerchandiseIndexViewModel
+@{
+    ViewData["Title"] = "Merchandise";
+}
+
+<div class="content neo-box">
+    <a asp-action="Add"><button id="add-button">Add New Product</button></a>
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <th>Action</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Discontinue</th>
+            </thead>
+            <tbody id="data">
+                @if(Model.Merchandises.Count() == 0){
+                    <tr>
+                        <td colspan="4"><span class="data-empty">Data Is Empty</span></td>
+                    </tr>
+                }else{
+                    @foreach(var merchandise in Model.Merchandises){
+                        <tr>
+                            <td class="td-action">
+                                <a asp-action="Edit" asp-route-id="@merchandise.Id"><button class="edit">Edit</button></a>
+                                <button class="delete" id="@merchandise.Id">Delete</button>
+                                @* <a asp-action="Delete" asp-route-id="@merchandise.Id"><button class="delete">Delete</button></a> *@
+                                <button class="info" id="@merchandise.Id">Info</button>
+                                @if(merchandise.Discontinue == "No"){
+                                    <button class="discontinue" id="@merchandise.Id">Discontinue</button>
+                                }else{
+                                    <button disabled>Discontinue</button>
+                                }
+                            </td>
+                            <td>@merchandise.Name</td>
+                            <td>@merchandise.Category</td>
+                            <td>@merchandise.Discontinue</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <div class="pagination">
+                            <div>Page @Model.Pagination.PageNumber of @Model.Pagination.TotalPages</div>
+                            <div>
+                                @for(int pageNumber=1; pageNumber<=Model.Pagination.TotalPages; pageNumber++){
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber">
+                                        <button>@pageNumber</button>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<div class="modal-layer">
+    <div class="popup-dialog">
+        <div>
+            <div class="info_group">
+                <label for="name" class="sub_key">Name</label>
+                <span class="sub_value" id="name"></span>
+            </div>
+            <div class="info_group">
+                <label for="category" class="sub_key">Category</label>
+                <span class="sub_value" id="category"></span>
+            </div>
+            <div class="info_group">
+                <label for="description" class="sub_key">Description</label>
+                <span class="sub_value" id="description"></span>
+            </div>
+            <div class="info_group">
+                <label for="price" class="sub_key">Price</label>
+                <span class="sub_value" id="price"></span>
+            </div>
+            <div class="info_group">
+                <label for="isdiscontinue" class="sub_key">Discontinue</label>
+                <span class="sub_value" id="isdiscontinue"></span>
+            </div>
+        </div>
+        <div>
+            <button id="cancel-button">Cancel</button>
+        </div>
+    </div>
+</div>
+
+@if(ViewBag.Message != null){
+    <div class="popup-alert-layer">
+        <div class="popup-alert-dialog">
+            <div>
+                <span>@ViewBag.Message</span>
+            </div>
+            <div class="foot_button">
+                <a asp-action="Index"><button>OK</button></a>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal-layer modal-confirm">
+    <div class="popup-dialog popup-confirm">
+        <div class="message-confirm">
+            <span id="show-confirm"></span>
+        </div>
+        <div class="foot_button">
+            <button class="close-confirm" id="yes-button">Yes</button>
+            <button class="close-confirm" id="no-button">No</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-layer modal-alert">
+    <div class="popup-dialog popup-alert">
+        <div class="message-alert">
+            <span id="show-alert"></span>
+        </div>
+        <div class="foot_button">
+            <button class="close-alert" id="cancel-button">OK</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/scripts/merchandise.js"></script>

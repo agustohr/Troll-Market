@@ -1,0 +1,81 @@
+@model HistoryIndexViewModel
+@{
+    ViewData["Title"] = "History";
+}
+
+<div class="content neo-box">
+    <form method="get" asp-action="Index">
+        <div class="form_group_search">
+            <label for="seller" class="sub_title_search">Seller</label>
+            <select asp-for="@Model.SellerUsername" class="form_style_search">
+                <option value="">Select Seller</option>
+                @foreach(var seller in Model.Sellers){
+                    <option value="@seller.Value">@seller.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form_group_search">
+            <label for="buyer" class="sub_title_search">Buyer</label>
+            <select asp-for="@Model.BuyerUsername" class="form_style_search">
+                <option value="">Select Buyer</option>
+                @foreach(var buyer in Model.Buyers){
+                    <option value="@buyer.Value">@buyer.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form_foot">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="content neo-box">
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <th>Date</th>
+                <th>Seller</th>
+                <th>Buyer</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Shipment</th>
+                <th>Total Price</th>
+            </thead>
+            <tbody id="data">
+                @if(Model.Histories.Count() == 0){
+                    <tr>
+                        <td colspan="4"><span class="data-empty">Data Is Empty</span></td>
+                    </tr>
+                }else{
+                    @foreach(var history in Model.Histories){
+                        <tr>
+                            <td>@history.PurchaseDate</td>
+                            <td>@history.SellerName</td>
+                            <td>@history.BuyerName</td>
+                            <td>@history.ProductName</td>
+                            <td>@history.Quantity</td>
+                            <td>@history.ShipmentName</td>
+                            <td>@history.TotalPrice</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <div class="pagination">
+                            <div>Page @Model.Pagination.PageNumber of @Model.Pagination.TotalPages</div>
+                            <div>
+                                @for(int pageNumber=1; pageNumber<=Model.Pagination.TotalPages; pageNumber++){
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber">
+                                        <button>@pageNumber</button>
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

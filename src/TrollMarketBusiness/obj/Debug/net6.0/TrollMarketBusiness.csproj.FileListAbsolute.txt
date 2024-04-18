@@ -1,0 +1,15 @@
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\bin\Debug\net6.0\TrollMarketBusiness.deps.json
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\bin\Debug\net6.0\TrollMarketBusiness.dll
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\bin\Debug\net6.0\TrollMarketBusiness.pdb
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\bin\Debug\net6.0\TrollMarketDataAccess.dll
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\bin\Debug\net6.0\TrollMarketDataAccess.pdb
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.csproj.AssemblyReference.cache
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.AssemblyInfoInputs.cache
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.AssemblyInfo.cs
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.csproj.CoreCompileInputs.cache
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.csproj.CopyComplete
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.dll
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\refint\TrollMarketBusiness.dll
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\TrollMarketBusiness.pdb
+C:\Users\1964\Documents\Framework Dotnet\Final\Troll Market\src\TrollMarketBusiness\obj\Debug\net6.0\ref\TrollMarketBusiness.dll

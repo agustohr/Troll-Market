@@ -1,0 +1,47 @@
+@* @model AuthLoginViewModel *@
+@{
+    Layout = "_LayoutAuth";
+    ViewData["Title"] = "Login";
+}
+
+<div class="form_area">
+    <h4 class="title">SIGN IN</h4>
+    @* <span>@ViewBag.Message</span> *@
+    <form method="post" action="Login">
+        <div class="form_group">
+            <label for="username" class="sub_title">Username</label>
+            <input type="text" class="form_style" name="username" id="username" placeholder="Enter your username">
+        </div>
+        <div class="form_group">
+            <label for="password" class="sub_title">Password</label>
+            <input type="password" class="form_style" name="password" id="password" placeholder="Enter your password" />
+        </div>
+        <div class="form_group">
+            <label for="role" class="sub_title">Role</label>
+            <select class="form_style" name="role">
+                <option value="Admin">Admin</option>
+                <option value="Seller">Seller</option>
+                <option value="Buyer">Buyer</option>
+            </select>
+        </div>
+        <div class="form_foot">
+            <button type="submit" class="btn">SIGN IN!</button>
+            <p>Doesn't Have an Account?</p>
+            <p><a asp-action="Register" asp-route-role="Buyer" class="link">Register As Buyer</a></p>
+            <p><a asp-action="Register" asp-route-role="Seller" class="link">Register As Seller</a></p>
+        </div>
+    </form>
+</div>
+
+@if(ViewBag.Message != null){
+    <div class="popup-alert-layer">
+        <div class="popup-alert-dialog">
+            <div>
+                <h2>@ViewBag.Message</h2>
+            </div>
+            <div>
+                <a asp-action="Index"><button class="btn">OK</button></a>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,52 @@
+@model MerchandiseInfoUpsertViewModel
+@{
+    ViewData["Title"] = $"Merchandise > {ViewBag.Action} Product";
+}
+
+<div class="content neo-box">
+    <form method="post">
+        <div class="form_group">
+            <label class="sub_title">Name</label>
+            <input asp-for="@Model.Name" class="form_style" id="name" placeholder="Enter Product Name">
+            <span asp-validation-for="@Model.Name" class="message_validation"></span>
+        </div>
+        <div class="form_group">
+            <label class="sub_title">Category</label>
+            <input asp-for="@Model.Category" class="form_style" name="category" id="category" placeholder="Enter Category">
+            <span asp-validation-for="@Model.Category" class="message_validation"></span>
+        </div>
+        <div class="form_group">
+            <label class="sub_title">Description</label>
+            <textarea asp-for="@Model.Description" id="description" class="form_style" cols="30" rows="10" placeholder="Enter Description"></textarea>
+        </div>
+        <div class="form_group">
+            <label class="sub_title">Price</label>
+            <input asp-for="@Model.Price" class="form_style" id="price">
+            <span asp-validation-for="@Model.Price" class="message_validation"></span>
+        </div>
+        <div class="form_group">
+            <label class="sub_title">Discontinue</label>
+            <label class="input_checkbox">
+                <input type="checkbox" asp-for="@Model.IsDiscontinue">
+                <div class="checkmark"></div>
+            </label>
+        </div>
+        <div class="form_foot">
+            <button type="submit" class="btn" id="submit-button">Save</button>
+            <a asp-action="Index"><button type="button" class="btn" id="cancel-button">Cancel</button></a>
+        </div>
+    </form>
+</div>
+
+@if(ViewBag.Message != null){
+    <div class="popup-alert-layer">
+        <div class="popup-alert-dialog">
+            <div>
+                <h2>@ViewBag.Message</h2>
+            </div>
+            <div>
+                <a asp-action="Index"><button class="btn">OK</button></a>
+            </div>
+        </div>
+    </div>
+}

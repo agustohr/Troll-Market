@@ -1,0 +1,40 @@
+@model NewAdminViewModel
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<div class="content neo-box">
+    <form method="post" asp-action="Add">
+        <div class="form_group">
+            <label for="username" class="sub_title">Username</label>
+            <input type="text" class="form_style" name="username" id="username" placeholder="Enter Username">
+            <span asp-validation-for="@Model.Username" class="message_validation"></span>
+        </div>
+        <div class="form_group">
+            <label for="password" class="sub_title">Password</label>
+            <input type="password" class="form_style" name="password" id="password" placeholder="Enter Password">
+            <span asp-validation-for="@Model.Password" class="message_validation"></span>
+        </div>
+        <div class="form_group">
+            <label for="passwordconfirm" class="sub_title">Confirm Password</label>
+            <input type="password" class="form_style" name="passwordconfirm" id="passwordconfirm" placeholder="Enter Confirm Password">
+            <span asp-validation-for="@Model.PasswordConfirm" class="message_validation"></span>
+        </div>
+        <div class="form_foot">
+            <button type="submit" class="btn" id="submit-button">Save New Admin</button>
+        </div>
+    </form>
+</div>
+
+@if(ViewBag.ResultMessage != null){
+    <div class="popup-alert-layer">
+        <div class="popup-alert-dialog">
+            <div>
+                <h2>@ViewBag.ResultMessage</h2>
+            </div>
+            <div>
+                <a asp-action="Index"><button class="btn">OK</button></a>
+            </div>
+        </div>
+    </div>
+}
